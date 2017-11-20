@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get User</title>
+    <script type="text/javascript" src="{{ url_for('static',filename='hello.js') }}"></script>
+</head>
+<body>
+    <button onclick="sayHello()">Warm welcome</button>
+    <form action="/getInfo" method="post">
+        <dl>
+            <dt>Enter Name: <br><input name="user_name"></dt>
+            <dt>Enter Your Score: <br><input name="user_score"></dt>
+        </dl>
+        <input type="submit">
+    </form>
+    <hr>
+
+    <form action="/login" method="post">
+        <dl>
+            <dt>Enter Name: <br><input name="user_name" value="{{ request.form.user_name }}"></dt>
+            <dt>Password: <br><input type="password" name="user_password"></dt>
+        </dl>
+        <input type="submit" value="login">
+    </form>
+    {% if error %}
+        <p><strong>Error: {{ error }}</strong></p>
+    {% endif %}
+</body>
+</html>
